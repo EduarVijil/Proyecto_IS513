@@ -13,6 +13,50 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
   bool _mostrarPassword = false;
 
+
+//validaciones
+  final String usuarioCorrecto = 'usuario@correo.com';
+  final String contrasenaCorrecta = '1234567';
+
+  void validarCampos() {
+    String usuario = _usuarioController.text.trim();
+    String password = _passwordController.text;
+
+    if (usuario.isEmpty || password.isEmpty) {
+      _mostrarMensaje('Todos los campos son necesarios');
+      return;
+    }
+
+    if (!usuario.contains('@')) {
+      _mostrarMensaje('El usuario debe contener "@"');
+      return;
+    }
+
+    if (password.length <= 6) {
+      _mostrarMensaje('La contraseña debe tener más de 6 caracteres');
+      return;
+    }
+
+    if (usuario != usuarioCorrecto || password != contrasenaCorrecta) {
+      _mostrarMensaje('Usuario o contraseña son incorrectos');
+      return;
+    }
+
+    else{
+     _mostrarMensaje('Se ha iniciado sesion correctamente.');
+      context.go('/principal');
+    }
+   
+
+    
+  }
+
+  void _mostrarMensaje(String mensaje) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(mensaje)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,8 +121,7 @@ class _LoginPageState extends State<LoginPage> {
               
 
               ElevatedButton(
-                onPressed: () {
-                },
+                onPressed: validarCampos,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey.shade300,
                   padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),

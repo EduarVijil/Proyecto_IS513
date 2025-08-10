@@ -18,6 +18,51 @@ class _RegistroPageState extends State<RegistroPage> {
   bool _mostrarPassword = false;
   bool _mostrarConfirmacion = false;
 
+void _validarRegistro() {
+    final nombre = _nombreController.text.trim();
+    final telefono = _telefonoController.text.trim();
+    final correo = _correoController.text.trim();
+    final contrasena = _contrasenaController.text;
+    final confirmar = _confirmarController.text;
+
+    if (nombre.isEmpty ||
+        telefono.isEmpty ||
+        correo.isEmpty ||
+        contrasena.isEmpty ||
+        confirmar.isEmpty) {
+      _mostrarMensaje('Debes llenar todos los campos');
+      return;
+    }
+
+    if (!correo.contains('@')) {
+      _mostrarMensaje('El correo debe contener "@"');
+      return;
+    }
+
+    if (!RegExp(r'^\d{8}$').hasMatch(telefono)) {
+      _mostrarMensaje('El teléfono debe tener exactamente 8 dígitos numéricos');
+      return;
+    }
+
+    if (contrasena.length <= 6) {
+      _mostrarMensaje('La contraseña debe tener más de 6 caracteres');
+      return;
+    }
+
+    if (contrasena != confirmar) {
+      _mostrarMensaje('Las contraseñas no son iguales');
+      return;
+    }
+
+    _mostrarMensaje('Registro exitoso');
+  }
+
+  void _mostrarMensaje(String mensaje) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(mensaje)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,9 +144,7 @@ class _RegistroPageState extends State<RegistroPage> {
               const SizedBox(height: 30),
 
               ElevatedButton(
-                onPressed: () {
-                
-                },
+                onPressed: _validarRegistro,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey.shade300,
                   padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
