@@ -58,6 +58,8 @@ void _validarRegistro() {
     else{
       contrasenaCorrecta = contrasena;
       usuarioCorrecto = correo;
+      correo1 = nombre;
+      telefono1 = telefono;
      _mostrarMensaje('Registro exitoso. Puedes iniciar sesión ahora.');
       _confirmarController.clear();
       _contrasenaController.clear();
@@ -76,7 +78,6 @@ void _validarRegistro() {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 28),
@@ -84,15 +85,11 @@ void _validarRegistro() {
             mainAxisSize: MainAxisSize.min,
             children: [
               RichText(
-                text: const TextSpan(
+                text: TextSpan(
                   text: 'REGISTRO',
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 1, 49, 3),
-                  ),
+                  style: Theme.of(context).textTheme.titleLarge)
                 ),
-              ),
+              
               const SizedBox(height: 30),
 
               _campoTexto(
@@ -156,7 +153,7 @@ void _validarRegistro() {
               ElevatedButton(
                 onPressed: _validarRegistro,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey.shade300,
+                  
                   padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
@@ -165,7 +162,7 @@ void _validarRegistro() {
                 ),
                 child: const Text(
                   'REGISTRARSE',
-                  style: TextStyle(color: Colors.black),
+                  
                 ),
               ),
               TextButton(
@@ -175,7 +172,7 @@ void _validarRegistro() {
                },
                   child: const Text(
                   'Puedes iniciar sesion, AQUI',
-                  style: TextStyle(color: Color.fromARGB(255, 3, 75, 6), fontWeight: FontWeight.w500),
+                  
   ),
 ),
             ],
@@ -198,11 +195,11 @@ void _validarRegistro() {
       obscureText: oculto,
       keyboardType: tipoTeclado,
       decoration: InputDecoration(
-        prefixIcon: Icon(icono, color: Colors.black),
+        prefixIcon: Icon(icono),
         suffixIcon: botonIcono,
         hintText: hint,
         filled: true,
-        fillColor: Colors.green.shade100,
+        
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(40),
           borderSide: BorderSide.none,

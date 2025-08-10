@@ -1,4 +1,5 @@
 import 'package:canchas_deportivas/views/canchas_page.dart';
+import 'package:canchas_deportivas/views/historial.dart';
 import 'package:canchas_deportivas/views/perfil_page.dart';
 import "package:flutter/material.dart";
 //import 'package:go_router/go_router.dart';
@@ -22,6 +23,7 @@ class _PrincipalPage extends State<PrincipalPage> {
     return Scaffold(
       //appBar: AppBar( title:
        //Text("Reserva de canchas")),
+      appBar: AppBar(title: Center(child: Text("Reservación de canchas")),),
       body:PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
@@ -31,7 +33,7 @@ class _PrincipalPage extends State<PrincipalPage> {
           }
           );
         } ,
-        children:[CanchasPage(), PerfilPage(),]
+        children:[CanchasPage(), PerfilPage(), History()]
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: opcion,
@@ -50,6 +52,10 @@ class _PrincipalPage extends State<PrincipalPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Perfil',
+          ),
+           BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: 'Historial',
           ),
         ],
       ),

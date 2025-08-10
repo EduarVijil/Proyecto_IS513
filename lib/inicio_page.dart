@@ -10,15 +10,13 @@ class LoginPage extends StatefulWidget {
 
 dynamic usuarioCorrecto;
 dynamic contrasenaCorrecta;
+dynamic correo1;
+dynamic telefono1;
 
 class _LoginPageState extends State<LoginPage> {
   final _usuarioController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _mostrarPassword = false;
-
-
-//validaciones
-  
 
   void validarCampos() {
     String usuario = _usuarioController.text.trim();
@@ -48,9 +46,6 @@ class _LoginPageState extends State<LoginPage> {
      _mostrarMensaje('Se ha iniciado sesion correctamente.');
       context.go('/principal');
     }
-   
-
-    
   }
 
   void _mostrarMensaje(String mensaje) {
@@ -62,8 +57,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 242, 243, 242),
-      body: Center(
+        body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 28),
           child: Column(
@@ -74,10 +68,10 @@ class _LoginPageState extends State<LoginPage> {
                   style: const TextStyle(
                     fontSize: 50,
                     fontWeight: FontWeight.w900, 
-                    color: Color.fromARGB(255, 1, 49, 3),
+                    
                   ),
                   children: [
-                    const TextSpan(text: 'L'),
+                    TextSpan(text: 'L', style: Theme.of(context).textTheme.titleLarge),
                     WidgetSpan(
                       alignment: PlaceholderAlignment.middle,
                       child: Padding(
@@ -89,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
-                    const TextSpan(text: 'GIN'),
+                    TextSpan(text: 'GIN', style: Theme.of(context).textTheme.titleLarge),
                   ],
                 ),
               ),
@@ -125,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 onPressed: validarCampos,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey.shade300,
+                  
                   padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
@@ -134,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: const Text(
                   'LOG IN',
-                  style: TextStyle(color: Colors.black),
+                  
                 ),
               ),
               
@@ -145,10 +139,9 @@ class _LoginPageState extends State<LoginPage> {
                },
                   child: const Text(
                   'Puedes registrarte aqui.',
-                  style: TextStyle(color: Color.fromARGB(255, 3, 75, 6), fontWeight: FontWeight.w500),
-  ),
-),
-
+                  
+                ),
+              ),
             ],
           ),
         ),
@@ -167,13 +160,12 @@ class _LoginPageState extends State<LoginPage> {
       controller: controller,
       obscureText: oculto,
       decoration: InputDecoration(
-        prefixIcon: Icon(icono, color: Colors.black),
+        prefixIcon: Icon(icono),
         suffixIcon: botonIcono,
         hintText: hint,
         filled: true,
-        fillColor: Colors.green.shade100,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(40),
+          borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide.none,
         ),
       ),
