@@ -1,4 +1,5 @@
 import 'package:canchas_deportivas/registro_page.dart';
+import 'package:canchas_deportivas/views/principal_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; 
 import 'package:go_router/go_router.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = GoRouter(
-      initialLocation: '/login',
+      initialLocation: '/principal',
       routes: [
         GoRoute(
           name: 'login',
@@ -32,7 +33,11 @@ class MyApp extends StatelessWidget {
           path: '/registro',
           builder: (context, state) => const RegistroPage(),
           ),
-       
+        GoRoute(
+          name: 'principal',
+          path: '/principal',
+          builder: (context, state) =>  PrincipalPage(user: '',),
+          ),       
       ],
     );
 
