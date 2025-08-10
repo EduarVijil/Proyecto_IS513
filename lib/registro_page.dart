@@ -17,56 +17,6 @@ class _RegistroPageState extends State<RegistroPage> {
 
   bool _mostrarPassword = false;
   bool _mostrarConfirmacion = false;
-<<<<<<< HEAD
-=======
-  
-  //validaciones
-
-  void _validarRegistro() {
-    final nombre = _nombreController.text.trim();
-    final telefono = _telefonoController.text.trim();
-    final correo = _correoController.text.trim();
-    final contrasena = _contrasenaController.text;
-    final confirmar = _confirmarController.text;
-
-    if (nombre.isEmpty ||
-        telefono.isEmpty ||
-        correo.isEmpty ||
-        contrasena.isEmpty ||
-        confirmar.isEmpty) {
-      _mostrarMensaje('Debes llenar todos los campos');
-      return;
-    }
-
-    if (!correo.contains('@')) {
-      _mostrarMensaje('El correo debe contener "@"');
-      return;
-    }
-
-    if (!RegExp(r'^\d{8}$').hasMatch(telefono)) {
-      _mostrarMensaje('El teléfono debe tener exactamente 8 dígitos numéricos');
-      return;
-    }
-
-    if (contrasena.length <= 6) {
-      _mostrarMensaje('La contraseña debe tener más de 6 caracteres');
-      return;
-    }
-
-    if (contrasena != confirmar) {
-      _mostrarMensaje('Las contraseñas no son iguales');
-      return;
-    }
-
-    _mostrarMensaje('Registro exitoso');
-  }
-
-  void _mostrarMensaje(String mensaje) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(mensaje)),
-    );
-  }
->>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +28,6 @@ class _RegistroPageState extends State<RegistroPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-<<<<<<< HEAD
               RichText(
                 text: const TextSpan(
                   text: 'REGISTRO',
@@ -87,14 +36,6 @@ class _RegistroPageState extends State<RegistroPage> {
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 1, 49, 3),
                   ),
-=======
-              const Text(
-                'REGISTRO',
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 1, 49, 3),
->>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
                 ),
               ),
               const SizedBox(height: 30),
@@ -131,12 +72,7 @@ class _RegistroPageState extends State<RegistroPage> {
                 hint: 'Contraseña',
                 oculto: !_mostrarPassword,
                 botonIcono: IconButton(
-<<<<<<< HEAD
                   icon: Icon(_mostrarPassword ? Icons.visibility : Icons.visibility_off),
-=======
-                  icon: Icon(
-                      _mostrarPassword ? Icons.visibility : Icons.visibility_off),
->>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
                   onPressed: () {
                     setState(() {
                       _mostrarPassword = !_mostrarPassword;
@@ -152,13 +88,7 @@ class _RegistroPageState extends State<RegistroPage> {
                 hint: 'Confirmar contraseña',
                 oculto: !_mostrarConfirmacion,
                 botonIcono: IconButton(
-<<<<<<< HEAD
                   icon: Icon(_mostrarConfirmacion ? Icons.visibility : Icons.visibility_off),
-=======
-                  icon: Icon(_mostrarConfirmacion
-                      ? Icons.visibility
-                      : Icons.visibility_off),
->>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
                   onPressed: () {
                     setState(() {
                       _mostrarConfirmacion = !_mostrarConfirmacion;
@@ -169,20 +99,12 @@ class _RegistroPageState extends State<RegistroPage> {
               const SizedBox(height: 30),
 
               ElevatedButton(
-<<<<<<< HEAD
                 onPressed: () {
                 
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey.shade300,
                   padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
-=======
-                onPressed: _validarRegistro,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey.shade300,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
->>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -194,7 +116,6 @@ class _RegistroPageState extends State<RegistroPage> {
                 ),
               ),
               TextButton(
-<<<<<<< HEAD
                 
               onPressed: () {
               context.go('/login');
@@ -204,18 +125,6 @@ class _RegistroPageState extends State<RegistroPage> {
                   style: TextStyle(color: Color.fromARGB(255, 3, 75, 6), fontWeight: FontWeight.w500),
   ),
 ),
-=======
-                onPressed: () {
-                  context.go('/login');
-                },
-                child: const Text(
-                  'Puedes iniciar sesión, AQUI',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 3, 75, 6),
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
->>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
             ],
           ),
         ),
