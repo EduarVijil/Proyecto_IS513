@@ -13,6 +13,48 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
   bool _mostrarPassword = false;
 
+<<<<<<< HEAD
+=======
+//validaciones
+  final String usuarioCorrecto = 'usuario@correo.com';
+  final String contrasenaCorrecta = '1234567';
+
+  void validarCampos() {
+    String usuario = _usuarioController.text.trim();
+    String password = _passwordController.text;
+
+    if (usuario.isEmpty || password.isEmpty) {
+      _mostrarMensaje('Todos los campos son necesarios');
+      return;
+    }
+
+    if (!usuario.contains('@')) {
+      _mostrarMensaje('El usuario debe contener "@"');
+      return;
+    }
+
+    if (password.length <= 6) {
+      _mostrarMensaje('La contraseña debe tener más de 6 caracteres');
+      return;
+    }
+
+    if (usuario != usuarioCorrecto || password != contrasenaCorrecta) {
+      _mostrarMensaje('Usuario o contraseña son incorrectos');
+      return;
+    }
+
+    _mostrarMensaje('Se ha iniciado sesion correctamente.');
+
+    
+  }
+
+  void _mostrarMensaje(String mensaje) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(mensaje)),
+    );
+  }
+
+>>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +69,11 @@ class _LoginPageState extends State<LoginPage> {
                 text: TextSpan(
                   style: const TextStyle(
                     fontSize: 50,
+<<<<<<< HEAD
                     fontWeight: FontWeight.w900, 
+=======
+                    fontWeight: FontWeight.w900,
+>>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
                     color: Color.fromARGB(255, 1, 49, 3),
                   ),
                   children: [
@@ -37,7 +83,11 @@ class _LoginPageState extends State<LoginPage> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 2),
                         child: Image.asset(
+<<<<<<< HEAD
                           'assets/pelota.png', 
+=======
+                          'assets/pelota.png',
+>>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
                           width: 50,
                           height: 50,
                         ),
@@ -74,14 +124,22 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 30),
+<<<<<<< HEAD
               
+=======
+>>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
 
               ElevatedButton(
                 onPressed: () {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey.shade300,
+<<<<<<< HEAD
                   padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
+=======
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 100, vertical: 16),
+>>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -92,6 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(color: Colors.black),
                 ),
               ),
+<<<<<<< HEAD
               
               TextButton(
                 
@@ -104,6 +163,20 @@ class _LoginPageState extends State<LoginPage> {
   ),
 ),
 
+=======
+
+              TextButton(
+                onPressed: () {
+                  context.go('/registro');
+                },
+                child: const Text(
+                  'Puedes registrarte aqui.',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 3, 75, 6),
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+>>>>>>> 43f5d677e91e7cd555e0ced3166d02f38dcc98d7
             ],
           ),
         ),
