@@ -101,7 +101,7 @@ class MyApp extends StatelessWidget {
     theme:  personal1,
     debugShowCheckedModeBanner: false,
     routerConfig: GoRouter(
-      initialLocation: '/principal',
+      initialLocation: '/login',
       routes: [
         GoRoute(
           name: 'login',
