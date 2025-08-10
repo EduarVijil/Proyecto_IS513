@@ -1,3 +1,4 @@
+import 'package:canchas_deportivas/inicio_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -54,12 +55,21 @@ void _validarRegistro() {
       return;
     }
 
-    _mostrarMensaje('Registro exitoso');
+    else{
+      contrasenaCorrecta = contrasena;
+      usuarioCorrecto = correo;
+     _mostrarMensaje('Registro exitoso. Puedes iniciar sesión ahora.');
+      _confirmarController.clear();
+      _contrasenaController.clear();
+      _correoController.clear();
+      _telefonoController.clear();
+      _nombreController.clear();
+    }
   }
 
   void _mostrarMensaje(String mensaje) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(mensaje)),
+      SnackBar(content: Text(mensaje), duration: Duration(milliseconds: 950),),
     );
   }
 

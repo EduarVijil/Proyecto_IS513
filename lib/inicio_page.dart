@@ -8,6 +8,9 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+dynamic usuarioCorrecto;
+dynamic contrasenaCorrecta;
+
 class _LoginPageState extends State<LoginPage> {
   final _usuarioController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -15,8 +18,7 @@ class _LoginPageState extends State<LoginPage> {
 
 
 //validaciones
-  final String usuarioCorrecto = 'usuario@correo.com';
-  final String contrasenaCorrecta = '1234567';
+  
 
   void validarCampos() {
     String usuario = _usuarioController.text.trim();
@@ -53,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _mostrarMensaje(String mensaje) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(mensaje)),
+      SnackBar(content: Text(mensaje), duration: Duration(milliseconds: 950),),
     );
   }
 
@@ -96,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
               _campoTexto(
                 controller: _usuarioController,
                 icono: Icons.person,
-                hint: 'Usuario',
+                hint: 'Correo electrónico',
                 oculto: false,
               ),
               const SizedBox(height: 16),
