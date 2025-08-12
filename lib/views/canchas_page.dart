@@ -8,7 +8,7 @@ class CanchasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  ListView.builder(
-      itemCount: emailIncome.length, // Example item count
+      itemCount: emailIncome.length, 
       itemBuilder: (BuildContext context, int index) {
         return CanchasWidget(
           canchaName: emailIncome[index]['user'],
@@ -17,7 +17,7 @@ class CanchasPage extends StatelessWidget {
               ? Image.network(emailIncome[index]['image'])
               : null,
           canchaHorario: emailIncome[index]['time'],
-          canchaTamano: emailIncome[index]['tamano'] ?? 'medium', // Default to 'medium' if not provided
+          canchaTamano: emailIncome[index]['tamano'] ?? 'medium', 
         );
       },
     );
