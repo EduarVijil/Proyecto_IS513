@@ -8,7 +8,7 @@ class CanchasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  ListView.builder(
-      itemCount: emailIncome.length, // Example item count
+      itemCount: emailIncome.length, 
       itemBuilder: (BuildContext context, int index) {
         return CanchasWidget(
           canchaName: emailIncome[index]['user'],
