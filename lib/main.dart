@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         GoRoute(
           name: 'regis1',
           path: '/regis1',
-          builder: (context, state) => RegisCancha(),
+          builder: (context, state) => RegisCancha(nombreCancha: '',),
           ),
       ],
     ),
