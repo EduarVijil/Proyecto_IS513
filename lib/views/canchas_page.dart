@@ -13,8 +13,11 @@ class CanchasPage extends StatelessWidget {
         return CanchasWidget(
           canchaName: emailIncome[index]['user'],
           canchaNumero: index + 1,
-          canchaImage: null, // Placeholder for image, can be replaced with an actual image widget
+          canchaImage: emailIncome[index]['image'] != null
+              ? Image.network(emailIncome[index]['image'])
+              : null,
           canchaHorario: emailIncome[index]['time'],
+          canchaTamano: emailIncome[index]['tamano'] ?? 'medium', // Default to 'medium' if not provided
         );
       },
     );

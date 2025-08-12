@@ -1,112 +1,97 @@
 import "package:flutter/material.dart";
+import "package:go_router/go_router.dart";
 
 class CanchasWidget extends StatelessWidget {
   const CanchasWidget({super.key, 
   required this.canchaName, 
   required this.canchaNumero,
   this.canchaImage,
-  required this.canchaHorario
+  required this.canchaHorario,
+  required this.canchaTamano
     
   });
   final String canchaName;
   final int canchaNumero;
   final Image? canchaImage;
-  
   final String canchaHorario;
+  final String? canchaTamano;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final oritenation = MediaQuery.of(context).orientation;
+    
     return InkWell(
-      splashColor: Colors.blue.withAlpha(30),
-      onTap: (){
-        
-
+      splashColor: const Color.fromARGB(177, 59, 255, 52).withAlpha(30),
+      onTap: () {
+        // Handle tap event here
+        context.push('/regis1');
       },
-      child: Dismissible(
-        // confirmDismiss: (direction) => Future.value(false),
-        key: Key(Symbol(canchaName).toString()),
-
-        background: Container(
-          color: Colors.blue,
-          padding: EdgeInsets.only(left: 12),
-          child: Align(
-            alignment: Alignment.centerLeft,
-
-            child: Icon(
-              Icons.archive_outlined,
-              color: Colors.blue[50],
-              size: 40,
+      child: Container(
+        
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.0),
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromARGB(108, 96, 136, 96),
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0, 3), // changes position of shadow
             ),
-          ),
+          ],
         ),
-
-        secondaryBackground: Container(
-          color: Colors.red,
-          padding: EdgeInsets.only(right: 12),
-          child: Align(
-            alignment: Alignment.centerRight,
-
-            child: Icon(
-              Icons.delete_outline_outlined,
-              color: Colors.red[50],
-              size: 40,
+        margin: EdgeInsets.all(12.0),
+        padding: EdgeInsets.all(12.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Text(
+              canchaTamano![0].toUpperCase(),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
-          ),
-        ), child: Container(
-          constraints: BoxConstraints(
-            maxHeight:
-                size.height * (oritenation == Orientation.portrait ? 0.1 : 0.2),
-          ),
-          // color: Colors.green,
-          margin: EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.red[50],
-                radius: 30,
-                child: Text(
-                  canchaName[0],
-                  style: TextStyle(fontSize: 28, color: Colors.red[700]),
-                ),
-              ),
-              SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      canchaName,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(
-                      canchaNumero.toString(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(canchaHorario, style: TextStyle(color: Colors.grey[700])),
-                  ],
-                ),
-              ),
-              SizedBox(width: 12),
-              Column(
+            SizedBox(width: 12),
+            Expanded(
+              child: Column(
                 mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(canchaHorario),
-                  SizedBox(height: 8),
-                  Icon(Icons.star_border_outlined, color: Colors.grey[600]),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        canchaName,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      Spacer(),
+                      Text(
+                        canchaNumero.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                  
+                  if (canchaImage != null)
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.0),
+                        child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15), // Radio de las esquinas
+                        child: canchaImage!,
+                      ),
+                    ),   
+                  ),
+                  
+                  Text(canchaHorario, style: TextStyle(color: Colors.grey[700])),
                 ],
               ),
-            ],
-          ),
+            ),
+            SizedBox(width: 12),
+          ],
         ),
       ),
     );
