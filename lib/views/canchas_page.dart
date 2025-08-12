@@ -30,8 +30,8 @@ class CanchasPage extends StatelessWidget {
                 : null,
             canchaHorario: emailIncome[index]['time'],
             canchaTamano: emailIncome[index]['tamano'] ?? 'medium',
-          ),
-        );
+          
+       
       },
     );
   }
