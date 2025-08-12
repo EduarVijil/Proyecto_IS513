@@ -36,6 +36,7 @@ class _RegisCanchaState extends State<RegisCancha> {
     if (seleccion != null) {
       setState(() {
         _fechaSeleccionada = seleccion;
+
       });
     }
   }
@@ -69,7 +70,7 @@ class _RegisCanchaState extends State<RegisCancha> {
             Text(
               _fechaSeleccionada != null
                   ? "Fecha: ${_fechaSeleccionada!.toLocal().toString().split(" ")[0]}"
-                  : "Necesitas seleccionar una fecha",
+                  : "No se ha seleccionado fecha",
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const Divider(),
