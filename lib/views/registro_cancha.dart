@@ -1,4 +1,6 @@
+import 'package:canchas_deportivas/widgets/elementos.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RegisCancha extends StatefulWidget {
   final String nombreCancha;
@@ -11,9 +13,9 @@ class RegisCancha extends StatefulWidget {
 
 class _RegisCanchaState extends State<RegisCancha> {
   DateTime? _fechaSeleccionada;
-
+ final configController = Get.find<ConfigController>();
   List<String> horarios = [
-    '11:00 AM', '12:00 PM', '3:00 PM', '6:00:00 PM',
+    '11:00 AM', '12:00 PM', '3:00 PM', '6:00 PM',
     '7:00 PM', '9:00 PM', '10:00 AM',
   ];
 
@@ -47,7 +49,8 @@ class _RegisCanchaState extends State<RegisCancha> {
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Se reservó ${widget.nombreCancha} a las $hora')),
+      SnackBar(content: Text('Se reservó ${widget.nombreCancha} a las $hora'), duration: Duration(milliseconds: 800),),
+      
     );
   }
 
@@ -61,6 +64,8 @@ class _RegisCanchaState extends State<RegisCancha> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
+            
+
             ElevatedButton.icon(
               icon: const Icon(Icons.calendar_today),
               label: const Text("Seleccionar fecha"),
@@ -83,8 +88,11 @@ class _RegisCanchaState extends State<RegisCancha> {
               child: ListView.builder(
                 itemCount: horarios.length,
                 itemBuilder: (context, index) {
+                  
                   final hora = horarios[index];
                   final reservado = horariosReservados.contains(hora);
+
+                  
                   return ListTile(
                     title: Text(
                       hora,
@@ -109,6 +117,7 @@ class _RegisCanchaState extends State<RegisCancha> {
             ),
           ],
         ),
+      
       ),
     );
   }

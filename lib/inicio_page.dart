@@ -1,5 +1,7 @@
+import 'package:canchas_deportivas/registro_page.dart';
+import 'package:canchas_deportivas/views/principal_page.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -44,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
 
     else{
      _mostrarMensaje('Se ha iniciado sesion correctamente.');
-      context.go('/principal');
+      Get.to(PrincipalPage(), transition: Transition.leftToRight);
     }
   }
 
@@ -135,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
               TextButton(
                 
               onPressed: () {
-              context.go('/registro');
+              Get.to( RegistroPage(), transition: Transition.rightToLeft);
                },
                   child: const Text(
                   'Puedes registrarte aqui.',

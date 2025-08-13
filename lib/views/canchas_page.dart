@@ -1,7 +1,8 @@
 import "package:canchas_deportivas/views/item_cancha.dart";
+import "package:canchas_deportivas/views/registro_cancha.dart";
 import "package:canchas_deportivas/widgets/canchas_widget.dart";
 import "package:flutter/material.dart";
-import "package:canchas_deportivas/views/registro_cancha.dart"; 
+import "package:get/get.dart"; 
 
 class CanchasPage extends StatelessWidget {
   const CanchasPage({super.key});
@@ -15,12 +16,7 @@ class CanchasPage extends StatelessWidget {
 
         return GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => RegisCancha(nombreCancha: canchaName),
-              ),
-            );
+
           },
           child: CanchasWidget(
             canchaName: canchaName,
@@ -28,8 +24,9 @@ class CanchasPage extends StatelessWidget {
             canchaImage: emailIncome[index]['image'] != null
                 ? Image.network(emailIncome[index]['image'])
                 : null,
-            canchaHorario: emailIncome[index]['time'],
-            canchaTamano: emailIncome[index]['tamano'] ?? 'medium',
+            canchaHorario: ('Hora Recomendada: ') + emailIncome[index]['time'],     
+            canchaTamano: emailIncome[index]['tamano'],
+            canchaUbicacion: emailIncome[index]['ubicacion'],
           ),  
         );
       },

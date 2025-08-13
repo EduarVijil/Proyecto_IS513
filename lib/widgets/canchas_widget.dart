@@ -1,5 +1,7 @@
+import "package:canchas_deportivas/views/registro_cancha.dart";
 import "package:flutter/material.dart";
-import "package:go_router/go_router.dart";
+import "package:get/get.dart";
+
 
 class CanchasWidget extends StatelessWidget {
   const CanchasWidget({super.key, 
@@ -7,7 +9,8 @@ class CanchasWidget extends StatelessWidget {
   required this.canchaNumero,
   this.canchaImage,
   required this.canchaHorario,
-  required this.canchaTamano
+  required this.canchaTamano,
+  required this.canchaUbicacion,
     
   });
   final String canchaName;
@@ -15,6 +18,7 @@ class CanchasWidget extends StatelessWidget {
   final Image? canchaImage;
   final String canchaHorario;
   final String? canchaTamano;
+  final String canchaUbicacion;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,10 @@ class CanchasWidget extends StatelessWidget {
       splashColor: const Color.fromARGB(177, 59, 255, 52).withAlpha(30),
       onTap: () {
         // Handle tap event here
-        context.push('/regis1');
+        Get.to(RegisCancha(nombreCancha: canchaName), 
+          transition: Transition.rightToLeft, 
+          duration: const Duration(milliseconds: 500)
+        );
       },
       child: Container(
         
@@ -87,6 +94,7 @@ class CanchasWidget extends StatelessWidget {
                   ),
                   
                   Text(canchaHorario, style: TextStyle(color: Colors.grey[700])),
+                  Text(canchaUbicacion, style: TextStyle(color: Colors.grey[700])),
                 ],
               ),
             ),

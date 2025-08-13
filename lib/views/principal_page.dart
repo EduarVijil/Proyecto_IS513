@@ -5,9 +5,7 @@ import "package:flutter/material.dart";
 //import 'package:go_router/go_router.dart';
 
 class PrincipalPage extends StatefulWidget {
-  const PrincipalPage({super.key, required this.user});
-
-  final String user;
+  const PrincipalPage({super.key});
 
   @override
   State<PrincipalPage> createState() => _PrincipalPage();
@@ -23,7 +21,7 @@ class _PrincipalPage extends State<PrincipalPage> {
     return Scaffold(
       //appBar: AppBar( title:
        //Text("Reserva de canchas")),
-      appBar: AppBar(title: Center(child: Text("Reservación de canchas")),),
+      appBar: AppBar(title: Center(child: Text("Reservación de canchas")),automaticallyImplyLeading: false),
       body:PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,

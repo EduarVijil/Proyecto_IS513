@@ -1,6 +1,6 @@
 import 'package:canchas_deportivas/inicio_page.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
 class RegistroPage extends StatefulWidget {
   const RegistroPage({super.key});
@@ -168,7 +168,7 @@ void _validarRegistro() {
               TextButton(
                 
               onPressed: () {
-              context.go('/login');
+              Get.to(LoginPage(), transition: Transition.leftToRight);
                },
                   child: const Text(
                   'Puedes iniciar sesion, AQUI',

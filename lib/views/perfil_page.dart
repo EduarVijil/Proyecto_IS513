@@ -2,7 +2,7 @@
 import "package:canchas_deportivas/inicio_page.dart";
 import "package:canchas_deportivas/widgets/elementos.dart";
 import "package:flutter/material.dart";
-import "package:go_router/go_router.dart";
+import "package:get/get.dart";
 
 class PerfilPage extends StatelessWidget {
   const PerfilPage({super.key});
@@ -35,7 +35,7 @@ class PerfilPage extends StatelessWidget {
                 SizedBox(height: 60),
                ElevatedButton(
                         onPressed: () {
-                          context.go('/login');
+                          Get.to(LoginPage(), transition: Transition.leftToRight);
                         },
                         
                         child: Text('Cerrar sesión', style: TextStyle(fontSize: 20,),),

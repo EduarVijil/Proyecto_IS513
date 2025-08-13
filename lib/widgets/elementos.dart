@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class info extends StatelessWidget {
   const info({super.key, 
@@ -139,3 +140,16 @@ class txtf extends StatelessWidget {
     );
   }
 }
+
+class ConfigController extends GetxController {
+  var opcionActiva = false.obs;
+
+  void activarOpcion() {
+    opcionActiva.value = true;
+  }
+
+  void desactivarOpcion() {
+    opcionActiva.value = false;
+  }
+}
+
