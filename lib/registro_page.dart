@@ -58,6 +58,7 @@ void _validarRegistro() {
     else{
       contrasenaCorrecta = contrasena;
       usuarioCorrecto = correo;
+  
       correo1 = nombre;
       telefono1 = telefono;
      _mostrarMensaje('Registro exitoso. Puedes iniciar sesión ahora.');

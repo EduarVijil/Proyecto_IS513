@@ -1,8 +1,7 @@
 import "package:canchas_deportivas/views/item_cancha.dart";
-import "package:canchas_deportivas/views/registro_cancha.dart";
 import "package:canchas_deportivas/widgets/canchas_widget.dart";
 import "package:flutter/material.dart";
-import "package:get/get.dart"; 
+
 
 class CanchasPage extends StatelessWidget {
   const CanchasPage({super.key});

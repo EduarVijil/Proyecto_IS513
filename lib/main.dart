@@ -1,4 +1,3 @@
-import 'package:canchas_deportivas/views/principal_page.dart';
 import 'package:canchas_deportivas/widgets/elementos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

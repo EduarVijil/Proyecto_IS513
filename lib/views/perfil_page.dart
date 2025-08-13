@@ -5,11 +5,12 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 class PerfilPage extends StatelessWidget {
-  const PerfilPage({super.key});
-
+   const PerfilPage({super.key});
+  final bool reserva = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
     body: SingleChildScrollView(
       child: SafeArea(
         child: Column(
@@ -44,6 +45,7 @@ class PerfilPage extends StatelessWidget {
             
             ),
             Column(
+                
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(height: 250),
@@ -58,5 +60,14 @@ class PerfilPage extends StatelessWidget {
     ),
     );
   }
+}
+
+Widget reservacion (bool reserva) {
+  if(reserva == true){
+    Get.snackbar('Reservado', 'La cancha ya ha sido reservada');
+  } else{
+    Get.snackbar('Disponible', 'La cancha está disponible para reservar');
+  }
+  return SizedBox.shrink();
 }
 

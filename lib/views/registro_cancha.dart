@@ -1,10 +1,11 @@
 import 'package:canchas_deportivas/widgets/elementos.dart';
+import 'package:canchas_deportivas/widgets/user_canchas.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisCancha extends StatefulWidget {
   final String nombreCancha;
-
+ 
   const RegisCancha({super.key, required this.nombreCancha});
 
   @override
@@ -20,6 +21,8 @@ class _RegisCanchaState extends State<RegisCancha> {
   ];
 
   Map<String, Set<String>> reservasPorCancha = {};
+  
+  final contadorController = Get.put<ContadorController>(ContadorController());
 
   @override
   void initState() {
@@ -43,17 +46,27 @@ class _RegisCanchaState extends State<RegisCancha> {
     }
   }
 
-  void _reservarHorario(String hora) {
-    setState(() {
-      reservasPorCancha[widget.nombreCancha]!.add(hora);
-    });
+void _reservarHorario(String hora) {
+  if (_fechaSeleccionada == null) return;
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Se reservó ${widget.nombreCancha} a las $hora'), duration: Duration(milliseconds: 800),),
-      
-    );
-  }
+  setState(() {
+    reservasPorCancha[widget.nombreCancha]!.add(hora);
+  });
 
+  // Guardar en el historial del controlador
+  contadorController.agregarReserva(
+    widget.nombreCancha,
+    _fechaSeleccionada!.toLocal().toString().split(" ")[0],
+    hora,
+  );
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text('Se reservó ${widget.nombreCancha} a las $hora'),
+      duration: Duration(milliseconds: 800),
+    ),
+  );
+}
   @override
   Widget build(BuildContext context) {
     final horariosReservados = reservasPorCancha[widget.nombreCancha]!;
@@ -90,6 +103,7 @@ class _RegisCanchaState extends State<RegisCancha> {
                 itemBuilder: (context, index) {
                   
                   final hora = horarios[index];
+                  
                   final reservado = horariosReservados.contains(hora);
 
                   
@@ -122,3 +136,6 @@ class _RegisCanchaState extends State<RegisCancha> {
     );
   }
 }
+
+
+ 
