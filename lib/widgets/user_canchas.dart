@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+
 class Reserva {
   final String cancha;
   final String fecha;
@@ -18,13 +19,19 @@ class Reserva {
 class ContadorController extends GetxController {
   RxList<Reserva> historialReservas = <Reserva>[].obs;
 
-  void agregarReserva(String cancha, String fecha, String hora) {
+ bool existeReserva(String cancha, String fecha, String hora) {
+    return historialReservas.any((reserva) =>
+        reserva.cancha == cancha &&
+        reserva.fecha == fecha &&
+        reserva.hora == hora);
+ }
+    void agregarReserva(String cancha, String fecha, String hora) {
+  
     final nuevaReserva = Reserva(
       cancha: cancha,
       fecha: fecha,
       hora: hora,
     );
-    historialReservas.add(nuevaReserva);
-    
+    historialReservas.add(nuevaReserva);  
   }
 }

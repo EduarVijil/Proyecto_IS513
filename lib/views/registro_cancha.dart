@@ -46,27 +46,37 @@ class _RegisCanchaState extends State<RegisCancha> {
     }
   }
 
-void _reservarHorario(String hora) {
-  if (_fechaSeleccionada == null) return;
+  void _reservarHorario(String hora) {
+  if (_fechaSeleccionada == null) {
+    Get.snackbar('Error', 'Selecciona una fecha primero');
+    return;
+  }
+
+  final fechaFormateada = _fechaSeleccionada!.toLocal().toString().split(" ")[0];
+
+  
+  if (contadorController.existeReserva(widget.nombreCancha, fechaFormateada, hora)) {
+    Get.snackbar(
+      'Error',
+      'Este horario ya está ocupado en ${widget.nombreCancha}',
+      backgroundColor: Colors.red,
+    );
+    return;
+  }
 
   setState(() {
     reservasPorCancha[widget.nombreCancha]!.add(hora);
   });
 
-  // Guardar en el historial del controlador
-  contadorController.agregarReserva(
-    widget.nombreCancha,
-    _fechaSeleccionada!.toLocal().toString().split(" ")[0],
-    hora,
-  );
-
+  contadorController.agregarReserva(widget.nombreCancha, fechaFormateada, hora);
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text('Se reservó ${widget.nombreCancha} a las $hora'),
       duration: Duration(milliseconds: 800),
-    ),
-  );
+      )
+    );
 }
+
   @override
   Widget build(BuildContext context) {
     final horariosReservados = reservasPorCancha[widget.nombreCancha]!;
