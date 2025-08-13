@@ -24,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
     String usuario = _usuarioController.text.trim();
     String password = _passwordController.text;
 
+    
     if (usuario.isEmpty || password.isEmpty) {
       _mostrarMensaje('Todos los campos son necesarios');
       return;

@@ -15,7 +15,13 @@ class History extends StatelessWidget {
         itemBuilder: (context, index) {
           final reserva = controller.historialReservas[index];
           return ListTile(
-            title: Text('Cancha: ${reserva.cancha}'),
+            title: Text( 
+              'Cancha: ${reserva.cancha}', 
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.lightGreen,
+              ),),
             subtitle: Text('Fecha: ${reserva.fecha} - Hora: ${reserva.hora}'),
             trailing: Icon(Icons.sports_soccer),
           );

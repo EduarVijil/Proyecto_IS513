@@ -1,12 +1,14 @@
 
 import "package:canchas_deportivas/inicio_page.dart";
 import "package:canchas_deportivas/widgets/elementos.dart";
+import "package:canchas_deportivas/widgets/user_canchas.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 class PerfilPage extends StatelessWidget {
-   const PerfilPage({super.key});
-  final bool reserva = false;
+  
+    PerfilPage({super.key});
+    final ContadorController controller = Get.put<ContadorController>(ContadorController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +35,9 @@ class PerfilPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 60),
+                SizedBox(height: 30),
+               
+               SizedBox(height: 60),
                ElevatedButton(
                         onPressed: () {
                           Get.to(LoginPage(), transition: Transition.leftToRight);
@@ -44,16 +48,7 @@ class PerfilPage extends StatelessWidget {
               ],
             
             ),
-            Column(
-                
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(height: 250),
-                Text( 'Canchas registradas', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,),),
-                SizedBox(height: 10),
-                
-              ],
-            ),
+           
           ],
         ),
       ),
@@ -62,12 +57,4 @@ class PerfilPage extends StatelessWidget {
   }
 }
 
-Widget reservacion (bool reserva) {
-  if(reserva == true){
-    Get.snackbar('Reservado', 'La cancha ya ha sido reservada');
-  } else{
-    Get.snackbar('Disponible', 'La cancha está disponible para reservar');
-  }
-  return SizedBox.shrink();
-}
 

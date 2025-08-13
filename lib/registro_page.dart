@@ -26,6 +26,8 @@ void _validarRegistro() {
     final contrasena = _contrasenaController.text;
     final confirmar = _confirmarController.text;
 
+    
+
     if (nombre.isEmpty ||
         telefono.isEmpty ||
         correo.isEmpty ||

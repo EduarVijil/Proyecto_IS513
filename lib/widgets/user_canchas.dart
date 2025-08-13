@@ -10,6 +10,8 @@ class Reserva {
     required this.cancha,
     required this.fecha,
     required this.hora,
+  
+
   });
 
   @override
