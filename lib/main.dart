@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     title: 'App Login',
     theme:  personal1,
     debugShowCheckedModeBanner: false,
-    home: PrincipalPage(),
+    home: LoginPage(),
     /*routerConfig: GoRouter(
       initialLocation: '/principal',
       routes: [
